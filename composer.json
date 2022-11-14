@@ -1,0 +1,24 @@
+{
+	"name":"bomber-net/laravel-helpers",
+	"description":"Helper functions for projects based on Laravel framework",
+	"type":"library",
+	"license":"MIT",
+	"autoload":{
+		"psr-4":{
+			"BomberNet\\LaravelHelpers\\":"src/"
+		},
+		"files":[
+			"src/helpers.php"
+		]
+	},
+	"authors":[
+		{
+			"name":"bomber-net",
+			"email":"an-rtk@mail.ru"
+		}
+	],
+	"minimum-stability":"dev",
+	"require":{
+		"php": ">=8.0"
+	}
+}
