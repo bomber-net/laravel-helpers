@@ -25,3 +25,16 @@ if (!function_exists ('is_intnum'))
 				return $int===$value;
 			}
 	}
+
+if (!function_exists ('sign'))
+	{
+		function sign (int|float $number):int
+			{
+				return match (true)
+					{
+						$number<0=>-1,
+						$number>0=>1,
+						default=>0
+					};
+			}
+	}
