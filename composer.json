@@ -21,6 +21,6 @@
 	"minimum-stability":"dev",
 	"require":{
 		"php": ">=8.0",
-		"laravel/framework": "10.x-dev"
+		"laravel/framework": ">=9"
 	}
 }
