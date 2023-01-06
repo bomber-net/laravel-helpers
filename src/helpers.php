@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Arr;
+
 if (!function_exists ('str_normalize'))
 	{
 		function str_normalize (string $str):float|bool|int|string|null
@@ -58,5 +60,26 @@ if (!function_exists ('hexbin'))
 						$bin.=$char;
 					}
 				return $bin;
+			}
+	}
+
+if (class_exists ('\Illuminate\Foundation\Vite'))
+	{
+		if (!function_exists ('vite_assets'))
+			{
+				function vite_assets ():array
+					{
+						$vite=new Illuminate\Foundation\Vite ();
+						$vite->toHtml ();
+						return Arr::first ((new ReflectionClass ($vite))->getProperty ('manifests')->getValue ());
+					}
+			}
+		
+		if (!function_exists ('vite_entries'))
+			{
+				function vite_entries ():array
+					{
+						return array_filter (vite_assets (),fn (array $asset)=>$asset['isEntry']??false);
+					}
 			}
 	}
