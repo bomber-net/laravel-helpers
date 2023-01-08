@@ -63,13 +63,13 @@ if (!function_exists ('hexbin'))
 			}
 	}
 
-if (class_exists ('\Illuminate\Foundation\Vite'))
+if (class_exists ('\Illuminate\Support\Facades\Vite'))
 	{
 		if (!function_exists ('vite_assets'))
 			{
-				function vite_assets ():array
+				function vite_assets (string $buildDirectory='bulid'):array
 					{
-						$vite=new Illuminate\Foundation\Vite ();
+						$vite=Illuminate\Support\Facades\Vite::useBuildDirectory ($buildDirectory);
 						$vite->toHtml ();
 						return Arr::first ((new ReflectionClass ($vite))->getProperty ('manifests')->getValue ());
 					}
@@ -77,9 +77,9 @@ if (class_exists ('\Illuminate\Foundation\Vite'))
 		
 		if (!function_exists ('vite_entries'))
 			{
-				function vite_entries ():array
+				function vite_entries (string $buildDirectory='bulid'):array
 					{
-						return array_filter (vite_assets (),fn (array $asset)=>$asset['isEntry']??false);
+						return array_filter (vite_assets ($buildDirectory),fn (array $asset)=>$asset['isEntry']??false);
 					}
 			}
 	}
